@@ -15,8 +15,8 @@ def constructors_for_season_and_round(season, round):
     filters = { 'season': season, 'round': round }
     return _get_constructors(str(season) + '/' + str(round) + '/constructors', filters)
 
-def constructors_info(driver_id):
-    return _get_constructors('constructors/' + str(driver_id), { 'driver_id': driver_id })
+def constructor_info(constructor_id):
+    return _get_constructors('constructors/' + str(constructor_id), { 'constructor_id': constructor_id })
 
 def _get_constructors(path, filters={}):
     offset = 0
@@ -29,8 +29,8 @@ def _get_constructors(path, filters={}):
         if results is not None:
             keys = set(list(results['MRData']['ConstructorTable'].keys())) - set(EXCLUDED_INFO_KEYS)
             result_description = { k: results['MRData']['ConstructorTable'][k] for k in keys }
-            for driver in results['MRData']['ConstructorTable']['Constructors']:
-                constructors.append(Constructor(driver))
+            for constructor in results['MRData']['ConstructorTable']['Constructors']:
+                constructors.append(Constructor(constructor))
         else:
             return None
 
