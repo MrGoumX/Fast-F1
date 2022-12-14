@@ -3,11 +3,11 @@ from datetime import datetime
 class Constructor:
     def __init__(self, obj):
         self.id = obj['constructorId']
-        self.name = obj['givenName']
+        self.name = obj['name']
         self.nationality = obj['nationality']
         self.obj = {
-            'id': obj['driverId'],
-            'name': obj['givenName'],
+            'id': obj['constructorId'],
+            'name': obj['name'],
             'nationality': obj['nationality']
         }
 
